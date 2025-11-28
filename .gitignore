@@ -25,3 +25,7 @@ Thumbs.db
 
 # logs
 *.log
+
+# other
+reference/
+wikiaves_data/
