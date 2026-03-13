@@ -43,11 +43,23 @@ def extract_cards(file):
 
             # HTML portion containing the desired data
             div_data = soup.find("div", class_="wa-lista-detalhes")
+            if not div_data:
+                continue
+            
+            # Extracts the value from 'Nome Popular'
+            nome_popular_tag = div_data.find("a", class_="wa-id")
+            if nome_popular_tag:
+                nome_popular = nome_popular_tag.text.strip()
+            else:
+                nome_popular = ""
 
-            # Extracts the desired data
-            nome_popular = div_data.find("a", class_="wa-id").text.strip()
-
-            nome_cientifico = div_data.find("i").text.strip()
+            # Extracts the value from 'Nome Cientifico'
+            nome_cientifico_tag = div_data.find("i")
+            if nome_cientifico_tag:
+                nome_cientifico = nome_cientifico_tag.text.strip()
+            else:
+                nome_cientifico = ""
+                
             record_dict.update({
                 "id": id,
                 "tipo de registro": tipo,
@@ -55,6 +67,7 @@ def extract_cards(file):
                 "nome_cientifico": nome_cientifico,
             })
 
+            # Extracts the value from miscellaneous fields
             for div in div_data.find_all("div"):
                 label_tag = div.find("label")
                 if not label_tag:
