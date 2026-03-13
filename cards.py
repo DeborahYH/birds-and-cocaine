@@ -73,6 +73,8 @@ def extract_cards(file):
                 if not label_tag:
                     continue
                 label = label_tag.text.strip().replace(":", "").lower()
+                if label == "local de observação":
+                    continue
                 value = label_tag.next_sibling.strip() if label_tag.next_sibling else ""
                 
                 # Extracts the author and city from a link
