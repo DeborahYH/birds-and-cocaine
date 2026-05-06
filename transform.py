@@ -236,11 +236,11 @@ def build_junctions(df):
 
     # Creates a junction table connecting the original dataframe with df_subjects
     df_subjects_bridge = df_expanded2[['record_id', 'subject']].merge(df_subjects)
-    df_subjects_bridge = df_subjects_bridge[['record_id', 'subject_id', 'subject']]
+    df_subjects_bridge = df_subjects_bridge[['record_id', 'subject_id']]
 
     # Creates a junction table connecting the original dataframe with df_sounds
     df_sounds_bridge = df_expanded2[['record_id', 'sound_type']].merge(df_sounds)
-    df_sounds_bridge = df_sounds_bridge[['record_id', 'sound_id', 'sound_type']]
+    df_sounds_bridge = df_sounds_bridge[['record_id', 'sound_id']]
 
     # Removes the columns that will be handled in separate tables and drops duplicate rows created by explode()
     df_clean = df_expanded2.drop(['subject', 'sound_type'], axis='columns').drop_duplicates(subset=['record_id'])
