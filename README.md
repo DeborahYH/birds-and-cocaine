@@ -1,4 +1,3 @@
-
 # The Rhamphotheca
 
 A data science project focused on collecting, storing, and analyzing biodiversity data from animal species.
@@ -19,12 +18,16 @@ The long-term goal is to build a complete data pipeline — from automated data 
 - Data Transformation: data extracted from the source will be transformed in order to ensure standardization, clarity, and avoid ambiguity.
 - Database Creation: table structure and data types will be defined before loading data into the database.
 
+
+
 ## 1. Tools
 
 - **Python:** the main programming language used for collecting and analyzing data.
 - **CustomTkinter:** library for creating a graphical interface that allows user-initiated data extraction
 - **PostgreSQL:** relational database for storing data
 - **Flask:** backend web server used to host interactive dashboards to external users
+
+
 
 ## 2. Current Functionalities
 
@@ -47,6 +50,26 @@ In order to adhere to ethical data extraction, the following rules were observed
 - Data will not be redistributed
 - This project will be destined for educational purposes only
   However, future improvements are also being planned.
+
+### 2.3. Data Transformation
+
+Data extracted from the source was transformed in order to ensure standardization, clarity, and avoid ambiguity.
+
+| Column           | Transformation                                                                    |
+| ---------------- | --------------------------------------------------------------------------------- |
+| media_type       | Converted 'F/S' into 'Foto/Som' ('Photo/Sound') respectively                      |
+| photo_date       | Standardized datetime format                                                      |
+| publication_date | Standardized datetime format                                                      |
+| location         | Split into the 'municipaliry' and 'State' columns                                 |
+| rec_datetime     | Standardized datetime format and split this column into 'rec_date' and 'rec_time' |
+| subject          | Column emoved - values can be acessed by joins using the record_id                |
+| sound_type       | Column removed - values can be acessed by joins using the record_id               |
+| emitter_seen     | Converted 'Sim/Não' ('Yes/No') to boolean values                                 |
+| after_playback   | Converted 'Sim/Não' ('Yes/No') to boolean values                                 |
+| file_size        | Standardized values to KB and removed measurement unit suffixes                   |
+| duration         | Standardized values to seconds and removed measurement unit suffixes             |
+
+
 
 ## 3. Planned Features
 
